@@ -1,7 +1,7 @@
 import re
 from typing import Pattern, Callable
 
-from atcodertools.codegen.code_generators import cpp, java, rust, python, nim, d, cs
+from atcodertools.codegen.code_generators import cpp, java, rust, python, nim, d, cs, kotlin
 from atcodertools.codegen.models.code_gen_args import CodeGenArgs
 from atcodertools.tools.templates import get_default_template_path
 
@@ -112,6 +112,15 @@ CSHARP = Language(
     default_template_path=get_default_template_path('cs'),
 )
 
+KOTLIN = Language(
+    name="kotlin",
+    display_name="Kotlin",
+    extension="kt",
+    submission_lang_pattern=re.compile(".*Kotlin.*"),
+    default_code_generator=kotlin.main,
+    default_template_path=get_default_template_path('kt')
+)
 
-ALL_LANGUAGES = [CPP, JAVA, RUST, PYTHON, NIM, DLANG, CSHARP]
+
+ALL_LANGUAGES = [CPP, JAVA, RUST, PYTHON, NIM, DLANG, CSHARP, KOTLIN]
 ALL_LANGUAGE_NAMES = [lang.display_name for lang in ALL_LANGUAGES]
